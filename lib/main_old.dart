@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:amplify_core/amplify_core.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:flutteraws/';
+// import 'package:flutteraws/';
 
 void main() {
   runApp(MyApp());

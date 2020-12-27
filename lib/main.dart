@@ -14,8 +14,7 @@ const _identityPoolId = 'us-east-1:a99aeba6-42da-40af-99be-414339030614';
 
 // Setup endpoints here:
 const _region = 'us-east-1';
-const _endpoint =
-    'https://y8k193xsl3.execute-api.us-east-1.amazonaws.com/dev';
+const _endpoint = 'https://y8k193xsl3.execute-api.us-east-1.amazonaws.com/dev';
 
 final userPool = new CognitoUserPool(_awsUserPoolId, _awsClientId);
 
@@ -125,6 +124,7 @@ class UserService {
     final prefs = await SharedPreferences.getInstance();
     final storage = new Storage(prefs);
     _userPool.storage = storage;
+
 
     _cognitoUser = await _userPool.getCurrentUser();
     if (_cognitoUser == null) {
@@ -272,96 +272,111 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      body: new Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new Container(
-              padding:
-              new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              width: screenSize.width,
-              child: new RaisedButton(
-                child: new Text(
-                  'Sign Up',
-                  style: new TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => new SignUpScreen()),
-                  );
-                },
-                color: Colors.blue,
-              ),
-            ),
-            new Container(
-              padding:
-              new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              width: screenSize.width,
-              child: new RaisedButton(
-                child: new Text(
-                  'Confirm Account',
-                  style: new TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => new ConfirmationScreen()),
-                  );
-                },
-                color: Colors.blue,
-              ),
-            ),
-            new Container(
-              padding:
-              new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              width: screenSize.width,
-              child: new RaisedButton(
-                child: new Text(
-                  'Login',
-                  style: new TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => new LoginScreen()),
-                  );
-                },
-                color: Colors.blue,
-              ),
-            ),
-            new Container(
-              padding:
-              new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
-              width: screenSize.width,
-              child: new RaisedButton(
-                child: new Text(
-                  'Secure Counter',
-                  style: new TextStyle(color: Colors.white),
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) => new SecureCounterScreen()),
-                  );
-                },
-                color: Colors.blue,
-              ),
-            ),
-          ],
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Login Demo',
+        theme: ThemeData(
+          primaryColor: Colors.blueAccent,
         ),
-      ),
-    );
+        home: LoginScreen());
   }
+  // @override
+  // Widget build(BuildContext context) {
+  //   final Size screenSize = MediaQuery.of(context).size;
+  //
+  //
+  //   return new Scaffold(
+  //
+  //
+  //     appBar: new AppBar(
+  //       title: new Text(widget.title),
+  //     ),
+  //     body: new Center(
+  //       child: new Column(
+  //
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: <Widget>[
+  //           new Container(
+  //             padding:
+  //             new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+  //             width: screenSize.width,
+  //             child: new RaisedButton(
+  //               child: new Text(
+  //                 'Sign Up',
+  //                 style: new TextStyle(color: Colors.white),
+  //               ),
+  //               onPressed: () {
+  //                 Navigator.push(
+  //                   context,
+  //                   new MaterialPageRoute(
+  //                       builder: (context) => new SignUpScreen()),
+  //                 );
+  //               },
+  //               color: Colors.blue,
+  //             ),
+  //           ),
+  //           new Container(
+  //             padding:
+  //             new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+  //             width: screenSize.width,
+  //             child: new RaisedButton(
+  //               child: new Text(
+  //                 'Confirm Account',
+  //                 style: new TextStyle(color: Colors.white),
+  //               ),
+  //               onPressed: () {
+  //                 Navigator.push(
+  //                   context,
+  //                   new MaterialPageRoute(
+  //                       builder: (context) => new ConfirmationScreen()),
+  //                 );
+  //               },
+  //               color: Colors.blue,
+  //             ),
+  //           ),
+  //           new Container(
+  //             padding:
+  //             new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+  //             width: screenSize.width,
+  //             child: new RaisedButton(
+  //               child: new Text(
+  //                 'Login',
+  //                 style: new TextStyle(color: Colors.white),
+  //               ),
+  //               onPressed: () {
+  //                 Navigator.push(
+  //                   context,
+  //                   new MaterialPageRoute(
+  //                       builder: (context) => new LoginScreen()),
+  //                 );
+  //               },
+  //               color: Colors.blue,
+  //             ),
+  //           ),
+  //           new Container(
+  //             padding:
+  //             new EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+  //             width: screenSize.width,
+  //             child: new RaisedButton(
+  //               child: new Text(
+  //                 'Secure Counter',
+  //                 style: new TextStyle(color: Colors.white),
+  //               ),
+  //               onPressed: () {
+  //                 Navigator.push(
+  //                   context,
+  //                   new MaterialPageRoute(
+  //                       builder: (context) => new SecureCounterScreen()),
+  //                 );
+  //               },
+  //               color: Colors.blue,
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }
 
 class SignUpScreen extends StatefulWidget {
@@ -652,6 +667,23 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
   }
 }
 
+
+class checkUserStatus {
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final _userService = new UserService(userPool);
+  User _user = new User();
+  bool _isAuthenticated = false;
+
+  Future<UserService> _getValues() async {
+    await _userService.init();
+    _isAuthenticated = await _userService.checkAuthenticated();
+    return _userService;
+  }
+
+
+
+}
+
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key key, this.email}) : super(key: key);
 
@@ -669,6 +701,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<UserService> _getValues() async {
     await _userService.init();
+    debugPrint(_userService.getCurrentUser().toString());
+    // debugPrint(_userService.getCredentials());
+
     _isAuthenticated = await _userService.checkAuthenticated();
     return _userService;
   }
@@ -709,12 +744,35 @@ class _LoginScreenState extends State<LoginScreen> {
                     new ConfirmationScreen(email: _user.email)),
               );
             }
+            else{
+                debugPrint('Success login!!!!!!!!');
+
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                          new MaterialPageRoute(
+                          builder: (context) => new MainScreen(),
+                          )
+                          );
+                }
           }
         },
       ),
       duration: new Duration(seconds: 30),
     );
-
+    // Container(
+    //   alignment: Alignment.bottomCenter,
+    //   child: FlatButton(
+    //                   onPressed: () {
+    //                     Navigator.push(
+    //                       context,
+    //                       new MaterialPageRoute(
+    //                           builder: (context) => new SignUpScreen()),
+    //                     );
+    //                   },
+    //       child: Text('Don\'t have an account? Sign up.')),
+    // );
+    // ])),
     Scaffold.of(context).showSnackBar(snackBar);
   }
 
@@ -725,7 +783,8 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context, AsyncSnapshot<UserService> snapshot) {
           if (snapshot.hasData) {
             if (_isAuthenticated) {
-              return new SecureCounterScreen();
+              return new MainScreen();
+              // return new SecureCounterScreen();
             }
             final Size screenSize = MediaQuery.of(context).size;
             return new Scaffold(
@@ -744,7 +803,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             title: new TextFormField(
                               initialValue: widget.email,
                               decoration: new InputDecoration(
-                                  hintText: 'example@inspire.my',
+                                  hintText: 'example@gmail.com',
                                   labelText: 'Email'),
                               keyboardType: TextInputType.emailAddress,
                               onSaved: (String email) {
@@ -779,7 +838,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             margin: new EdgeInsets.only(
                               top: 10.0,
                             ),
-                          ),
+                            ),
+                          // ),
                         ],
                       ),
                     ),
@@ -809,6 +869,7 @@ class _SecureCounterScreenState extends State<SecureCounterScreen> {
   Counter _counter = new Counter(0);
   bool _isAuthenticated = false;
 
+
   void _incrementCounter() async {
     final counter = await _counterService.incrementCounter();
     setState(() {
@@ -821,6 +882,7 @@ class _SecureCounterScreenState extends State<SecureCounterScreen> {
       await _userService.init();
       _isAuthenticated = await _userService.checkAuthenticated();
       if (_isAuthenticated) {
+        debugPrint("_isAuthenticated = True!!!!!!!!");
         // get user attributes from cognito
         _user = await _userService.getCurrentUser();
 
@@ -834,6 +896,8 @@ class _SecureCounterScreenState extends State<SecureCounterScreen> {
         _counterService = new CounterService(_awsSigV4Client);
         _counter = await _counterService.getCounter();
       }
+      debugPrint("_isAuthenticated = True2!!!!!!!!");
+
       return _userService;
     } on CognitoClientException catch (e) {
       if (e.code == 'NotAuthorizedException') {
@@ -851,7 +915,7 @@ class _SecureCounterScreenState extends State<SecureCounterScreen> {
         builder: (context, AsyncSnapshot<UserService> snapshot) {
           if (snapshot.hasData) {
             if (!_isAuthenticated) {
-              return new LoginScreen();
+              return new MainScreen();
             }
 
             return new Scaffold(
@@ -904,5 +968,148 @@ class _SecureCounterScreenState extends State<SecureCounterScreen> {
           return new Scaffold(
               appBar: new AppBar(title: new Text('Loading...')));
         });
+  }
+}
+class MainScreen extends StatefulWidget {
+  MainScreen({Key key}) : super(key: key);
+
+  @override
+  _MainScreenState createState() => new _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final _userService = new UserService(userPool);
+  bool _isAuthenticated = false;
+
+  Future<UserService> _getValues() async {
+    await _userService.init();
+    debugPrint("UserService:"+_userService.getCurrentUser().toString());
+
+    _isAuthenticated = await _userService.checkAuthenticated();
+    return _userService;
+  }
+  @override
+  Widget build(BuildContext context) {
+    _getValues();
+    // return Scaffold()
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Secure Counter'),
+      ),
+      body: new Center(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text(
+              'Welcome User!',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            new Center(
+              child: new InkWell(
+                child: new Text(
+                  'Logout',
+                  style: new TextStyle(color: Colors.blueAccent),
+                ),
+                onTap: () {
+                  _userService.signOut();
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    new MaterialPageRoute(
+                        builder: (context) => new LoginScreen()),
+                  );
+                },
+              ),
+            ),
+
+            // final _userService = new UserService(userPool);
+  // CounterService _counterService;
+  // AwsSigV4Client _awsSigV4Client;
+  // User _user = new User();
+  // // Counter _counter = new Counter(0);
+  // bool _isAuthenticated = false;
+
+  // void _incrementCounter() async {
+  //   final counter = await _counterService.incrementCounter();
+  //   setState(() {
+  //     _counter = counter;
+  //   });
+  // }
+
+  // Future<UserService> _getValues(BuildContext context) async {
+  //   try {
+  //     await _userService.init();
+  //     _isAuthenticated = await _userService.checkAuthenticated();
+  //     if (_isAuthenticated) {
+  //       // get user attributes from cognito
+  //       _user = await _userService.getCurrentUser();
+  //
+  //       // get session credentials
+  //       final credentials = await _userService.getCredentials();
+  //       _awsSigV4Client = new AwsSigV4Client(
+  //           credentials.accessKeyId, credentials.secretAccessKey, _endpoint,
+  //           region: _region, sessionToken: credentials.sessionToken);
+  //
+  //       // get previous count
+  //       _counterService = new CounterService(_awsSigV4Client);
+  //       _counter = await _counterService.getCounter();
+  //     }
+  //     return _userService;
+  //   } on CognitoClientException catch (e) {
+  //     if (e.code == 'NotAuthorizedException') {
+  //       await _userService.signOut();
+  //       Navigator.pop(context);
+  //     }
+  //     throw e;
+  //   }
+  // }
+
+              // new Divider(),
+            // new Text(
+            //   'You have pushed the button this many times:',
+            // ),
+            // new Text(
+            //   '${_counter.count}',
+            //   style: Theme.of(context).textTheme.display1,
+            // ),
+            // new Divider(),
+            // new Center(
+            //   child: new InkWell(
+            //     child: new Text(
+            //       'Logout',
+            //       style: new TextStyle(color: Colors.blueAccent),
+            //     ),
+            //     onTap: () {
+            //       _userService.signOut();
+            //       Navigator.pop(context);
+            //     },
+            //   ),
+            // ),
+          ],
+        ),
+      ),
+      // floatingActionButton: new FloatingActionButton(
+      //   onPressed: () {
+      //     if (snapshot.hasData) {
+      //       _incrementCounter();
+      //     }
+      //   },
+      //   tooltip: 'Increment',
+      //   child: new Icon(Icons.add),
+      // ),
+    );
+    // return new FutureBuilder(
+    //     future: _getValues(context),
+    //     builder: (context, AsyncSnapshot<UserService> snapshot) {
+    //       if (snapshot.hasData) {
+    //         if (!_isAuthenticated) {
+    //           return new LoginScreen();
+    //         }
+    //
+    //
+    //       }
+    //       return new Scaffold(
+    //           appBar: new AppBar(title: new Text('Loading...')));
+    //     });
   }
 }

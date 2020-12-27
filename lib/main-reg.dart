@@ -62,12 +62,19 @@ class _MyAppState extends State<MyApp> {
                               didProvideCredentials: _authService.signUpWithCredentials,
 
                               shouldShowLogin: _authService.showLogin)),
-                              // Show Verification Code Page
-                              if (snapshot.data.authFlowStatus == AuthFlowStatus.verification)
-                                MaterialPage(child: VerificationPage(
-                                    didProvideVerificationCode: _authService.verifyCode))
+                    // Show Verification Code Page
+                    if (snapshot.data.authFlowStatus == AuthFlowStatus.verification)
+                      MaterialPage(child: VerificationPage(
+                          didProvideVerificationCode: _authService.verifyCode))
 
-                            ],
+                    else
+                      MaterialPage(
+                          child: LoginPage(
+                              didProvideCredentials: _authService.loginWithCredentials,
+
+                              shouldShowSignUp: _authService.showSignUp)),
+
+                  ],
                   onPopPage: (route, result) => route.didPop(result),
                 );
               } else {
